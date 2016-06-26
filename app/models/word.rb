@@ -3,7 +3,7 @@ class Word
 
   property :text, index: :exact
 
-  before_save do
+  before_create do
     self.text = text.underscore
   end
 end
