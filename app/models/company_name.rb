@@ -3,7 +3,7 @@ class CompanyName
 
   property :text, type: String, constraint: :unique
 
-  has_many :out, :words, type: :has, model_class: :Word
+  has_many :out, :words, type: :has, model_class: :Word, unique: true
 
   before_create do
     self.text = text.underscore
