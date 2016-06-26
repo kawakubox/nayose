@@ -9,6 +9,14 @@ class CompanyName
     self.text = text.underscore
   end
 
+  def destructure
+    self.words = sanitize.split(/[ ]+/).map do |word|
+      w = Word.find_or_create(text: word)
+      w.names << self
+      w
+    end
+  end
+
   private
 
   def sanitize
