@@ -13,6 +13,6 @@ class CompanyName
   private
 
   def sanitize
-    self.text
+    self.text.gsub(/[^0-9a-zA-Z]/, ' ')
   end
 end
