@@ -3,12 +3,11 @@ class CompanyName
 
   property :text, type: String, constraint: :unique
 
+  has_many :out, :words, type: :has, model_class: :Word
+
   before_save do
     self.text = text.underscore
-  end
-
-  after_save do
-    sanitize.split(/[ ]+/).map { |word| Word.find_or_create(text: word) }
+    self.words = sanitize.split(/[ ]+/).map { |word| Word.find_or_create(text: word) }
   end
 
   private
