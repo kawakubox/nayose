@@ -1,7 +1,7 @@
 class Word
   include Neo4j::ActiveNode
 
-  property :text, index: :exact
+  property :text, type: String, constraint: :unique
 
   before_create do
     self.text = text.underscore
