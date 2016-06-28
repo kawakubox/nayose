@@ -6,10 +6,6 @@ class CompanyName
 
   has_many :out, :words, type: :has, model_class: :Word, unique: true
 
-  before_create do
-    self.text = text.underscore
-  end
-
   before_save do
     self.word_count = sanitize.split(/[ ]+/).size
   end
