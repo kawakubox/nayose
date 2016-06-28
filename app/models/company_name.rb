@@ -11,7 +11,7 @@ class CompanyName
   end
 
   def destructure
-    self.words = sanitize.split(/[ ]+/).map
+    self.words = sanitize.split(/[ ]+/).map { |w| Word.find_or_create(text: w) }
   end
 
   private
